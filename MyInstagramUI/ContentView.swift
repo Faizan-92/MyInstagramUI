@@ -12,7 +12,12 @@ struct ContentView: View {
         HeaderView()
         Divider()
         StoryView()
-        Spacer()
+        ScrollView(.vertical, showsIndicators: false) {
+            ForEach(postItems) { item in
+                Divider()
+                PostView(item: item)
+            }
+        }
     }
 }
 
