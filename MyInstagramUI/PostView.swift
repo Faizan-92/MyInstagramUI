@@ -12,26 +12,50 @@ struct PostView: View {
 
     var body: some View {
         VStack {
-            HStack {
+            HStack(spacing: 10) {
                 Image(item.icon)
                     .resizable()
                     .frame(width: 45, height: 45, alignment: .center)
                     .clipShape(Circle())
                 VStack {
-                    Text(item.name)
-                        .bold()
-                    Text(item.city)
+                    HStack {
+                        Text(item.name)
+                            .bold()
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                    }
+                    HStack {
+                        Text(item.city)
+                        Spacer()
+                    }
+                    
                 }
                 Spacer()
                 Image("more")
+                    .padding(.trailing)
             }
-            .padding(10)
+            .padding(.leading)
+
             Image(item.post)
-            HStack {
-                Image("heart")
-                Image("message")
-                Image("messenger")
+                .resizable(resizingMode: .stretch)
+                
+
+            ZStack {
+                HStack {
+                    HStack {
+                        Image("heart")
+                        Image("share")
+                        Image("messenger")
+                    }
+                    Spacer()
+                    HStack {
+                        Image("bookmark")
+                    }
+                }
+                
+                Image("carouseldots")
             }
+            .padding(.horizontal)
         }
     }
 }
